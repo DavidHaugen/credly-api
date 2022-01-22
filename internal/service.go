@@ -1,3 +1,5 @@
 package internal
 
-type MarvelService interface{}
+type MarvelService interface {
+	GetUsers() ([]User, error)
+}

@@ -34,6 +34,18 @@ func (m *MockRouteHandler) EXPECT() *MockRouteHandlerMockRecorder {
 	return m.recorder
 }
 
+// GetUsers mocks base method.
+func (m *MockRouteHandler) GetUsers(c *gin.Context) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "GetUsers", c)
+}
+
+// GetUsers indicates an expected call of GetUsers.
+func (mr *MockRouteHandlerMockRecorder) GetUsers(c interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUsers", reflect.TypeOf((*MockRouteHandler)(nil).GetUsers), c)
+}
+
 // Ping mocks base method.
 func (m *MockRouteHandler) Ping(c *gin.Context) {
 	m.ctrl.T.Helper()

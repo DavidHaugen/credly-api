@@ -7,10 +7,9 @@ import (
 	"github.com/google/uuid"
 )
 
-func (s Service) GetAuthParams() string {
+func (s Service) getRequestURL(baseURL string) string {
 	uuid := uuid.New()
 	str := fmt.Sprintf(`%s%s%s`, uuid, s.PrivateAPIKey, s.PublicAPIKey)
 	hash := md5.Sum([]byte(str))
-
-	return fmt.Sprintf(`ts=%s&apikey=%s&hash=%s`, uuid, s.PublicAPIKey, hash)
+	return fmt.Sprintf(`%s?ts=%s&apikey=%s&hash=%x`, baseURL, uuid, s.PublicAPIKey, hash)
 }
