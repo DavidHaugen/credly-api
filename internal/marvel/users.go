@@ -3,6 +3,7 @@ package marvel
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -29,10 +30,20 @@ func (s Service) GetUsers() ([]internal.User, error) {
 		return nil, errors.New("user response is nil")
 	}
 
+	fmt.Println("response: ", *userResponse)
+
 	return mapUsers(*userResponse), nil
 }
 
 func mapUsers(userResponse GetUserResponse) []internal.User {
 	users := []internal.User{}
+	for _, v := range userResponse.Data.Results {
+		users = append(users, internal.User{
+			MarvelID:    v.ID,
+			Name:        v.Name,
+			Description: v.Description,
+			Thumbnail:   fmt.Sprintf(`%s%s`, v.Thumbnail.Path, v.Thumbnail.Extension),
+		})
+	}
 	return users
 }

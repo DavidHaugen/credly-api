@@ -23,6 +23,6 @@ func newApplicationConfig(config *config.Config) *applicationConfig {
 
 // addDependencies :
 func (a *applicationConfig) addDependencies() *applicationConfig {
-	a.marvel = marvel.NewService(a.config.Marvel.PrivateAPIKey, a.config.Marvel.PublicAPIKey)
+	a.marvel = marvel.NewService(a.config.Marvel.PublicAPIKey, a.config.Marvel.PrivateAPIKey)
 	return a
 }
