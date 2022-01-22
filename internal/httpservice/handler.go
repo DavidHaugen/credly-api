@@ -1,6 +1,8 @@
 package httpservice
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 //go:generate mockgen -source=handler.go -package=mock -destination=mock/handler.go
 
@@ -11,9 +13,10 @@ type RouteHandler interface {
 
 // Handler : handles all http requests
 type Handler struct {
+	app *applicationConfig
 }
 
 // newHandler : returns a configured route handler.
-func newHandler() RouteHandler {
-	return Handler{}
+func newHandler(config *applicationConfig) RouteHandler {
+	return Handler{config}
 }

@@ -15,5 +15,5 @@ func RunHTTPServer() {
 	case err != nil:
 		log.Fatal("error fetching config:", err)
 	}
-	httpservice.ListenAndServe()
+	httpservice.ListenAndServe(config)
 }

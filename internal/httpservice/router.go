@@ -1,12 +1,14 @@
 package httpservice
 
 import (
+	"github.com/DavidHaugen/golang-boilerplate/internal/config"
 	"github.com/gin-gonic/gin"
 )
 
-func ListenAndServe() {
-	h := newHandler()
-	router := getRouter(h)
+func ListenAndServe(config *config.Config) {
+	applicationConfig := newApplicationConfig(config)
+	handler := newHandler(applicationConfig)
+	router := getRouter(handler)
 	router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 
