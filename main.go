@@ -1,9 +1,7 @@
 package main
 
-import (
-	"github.com/DavidHaugen/golang-boilerplate/internal/httpservice"
-)
+import "github.com/DavidHaugen/golang-boilerplate/cmd"
 
 func main() {
-	httpservice.ListenAndServe()
+	cmd.RunHTTPServer()
 }
