@@ -15,6 +15,10 @@ func GetConfig() (*Config, error) {
 			PublicAPIKey:  viper.GetString("MARVEL_API_PUBLIC"),
 			PrivateAPIKey: viper.GetString("MARVEL_API_PRIVATE"),
 		},
+		Credly: Credly{
+			AuthToken:      viper.GetString("CREDLY_API_AUTH_TOKEN"),
+			OrganizationID: viper.GetString("ORGANIZATION_ID"),
+		},
 	}
 	return config, nil
 }

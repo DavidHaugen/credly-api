@@ -10,6 +10,7 @@ import (
 type RouteHandler interface {
 	Ping(c *gin.Context)
 	GetUsers(c *gin.Context)
+	GetBadges(c *gin.Context)
 }
 
 // Handler : handles all http requests

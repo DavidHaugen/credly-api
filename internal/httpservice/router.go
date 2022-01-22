@@ -25,4 +25,5 @@ func addRoutes(router *gin.Engine, handler RouteHandler) {
 func addBaseRoutes(rg *gin.RouterGroup, handler RouteHandler) {
 	rg.GET("/ping", handler.Ping)
 	rg.GET("/users", handler.GetUsers)
+	rg.GET("/badges", handler.GetBadges)
 }
